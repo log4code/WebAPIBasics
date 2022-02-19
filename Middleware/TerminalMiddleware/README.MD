@@ -30,4 +30,14 @@ Lastly, the WebApplication is ran in a blocking fashion (continues to accept req
 app.Run();
 ```
 
+## Running the app
+
+From the command line in the application folder:
+
+```
+dotnet watch run
+```
+
+This command will run the application AND open the default page in a web browser.
+
 
