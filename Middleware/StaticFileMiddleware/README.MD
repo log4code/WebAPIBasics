@@ -50,7 +50,7 @@ Hello world!!
 
 ## Console logs
 
-The console will have the following output for every request.
+The console will have the following output for every request where there is not a matching file in wwwroot. If a file is found, this terminal delegate will not be ran.
 
 ```
 Terminal (last) middleware
