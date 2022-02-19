@@ -1,6 +1,6 @@
-# Terminal Middleware 
+﻿# Multiple Middleware 
 
-Example of a [middleware](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/middleware/?view=aspnetcore-6.0) delegate that is the terminal (last) middleware in the pipeline and runs for all requests to the API regardless of request URL.
+Example of a multiple [middleware](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/middleware/?view=aspnetcore-6.0) delegates in the pipeline and runs for all requests to the API regardless of request URL.
 
 ## Explaination
 
@@ -9,6 +9,17 @@ In `Startup.cs` we use Minimal APIs to create a new WebApplication Builder. This
 ```
 var builder = WebApplication.CreateBuilder();
 var app = builder.Build();
+```
+
+Next, define a middleware delegate. This middleware prints out when it starts and when it ends. However, in between those two commands it passes the request further down the pipeline to be processed.
+
+```
+app.Use(async (context, next) =>
+{
+    Console.WriteLine("First middleware start.");
+    await next.Invoke();
+    Console.WriteLine("First middleware end.");
+});
 ```
 
 Then, an anonymous `RequestDelegate` is defined as the terminal (or last) middleware function that will be executed for all incoming requests to the application.
@@ -39,8 +50,11 @@ Hello world!!
 
 ## Console logs
 
-The console will have the following output for every request.
+The console will have the following output for every request. Note the order of the output to understand how a request flows through middleware.
 
 ```
+First middleware start.
 Terminal (last) middleware
+First middleware end.
 ```
+
