@@ -19,7 +19,7 @@ app.UseStaticFiles();
 
 The default web root directory is named `wwwroot`. Create a top level directory in the project called `wwwroot` and place any files you would like to host there.
 
-
+![image](https://user-images.githubusercontent.com/48453433/154818083-355c7951-0f1e-4860-a923-6b1a7c7ba797.png)
 
 
 Then, an anonymous `RequestDelegate` is defined as the terminal (or last) middleware function that will be executed fof all requests NOT servering static files.
