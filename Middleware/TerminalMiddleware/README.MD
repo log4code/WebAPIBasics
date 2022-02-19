@@ -6,6 +6,11 @@ Example of a [middleware](https://docs.microsoft.com/en-us/aspnet/core/fundament
 
 In `Startup.cs` we use Minimal APIs to create a new WebApplication Builder. This builder is used to build an application with no additional configured services. 
 
+```
+var builder = WebApplication.CreateBuilder();
+var app = builder.Build();
+```
+
 Then, an anonymous `RequestDelegate` is defined as the terminal (or last) middleware function that will be executed for all incoming requests to the application.
 
 This anonymous function performs 2 tasks.
@@ -20,5 +25,9 @@ app.Run(async context =>
 });
 ```
 Lastly, the WebApplication is ran in a blocking fashion (continues to accept requests) until it is shut down.
+
+```
+app.Run();
+```
 
 
